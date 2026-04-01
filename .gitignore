@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# FAISS / uploads (runtime data)
+backend/faiss_index/
+backend/uploads/
+
+# Node
+frontend/node_modules/
+frontend/build/
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+backend/backend_debug.log
+backend/backend_debug_2.log
+backend/backend_run.log
+backend/backend_run_final.log
+backend/backend_run_fresh.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# FAISS Metadata
+backend/faiss_index.meta.json

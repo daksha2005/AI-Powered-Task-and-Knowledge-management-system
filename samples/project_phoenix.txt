@@ -1,0 +1,6 @@
+Project Phoenix - Technical Roadmap
+Phase 1: Database Migration to MySQL 8.
+Phase 2: Implementing JWT-based authentication for state-of-the-art security.
+Phase 3: Integrating FAISS for high-performance semantic search.
+Phase 4: Frontend modernization using React 18 and Tailwind CSS.
+Deadline for MVP: June 15, 2024.

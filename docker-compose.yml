@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: ai_task_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Dakshu@2005
+      MYSQL_DATABASE: ai_task_system
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pDakshu@2005"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: ai_task_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: mysql+pymysql://root:Dakshu@2005@db:3306/ai_task_system
+      SECRET_KEY: supersecretkey_change_in_production_2024
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 60
+      UPLOAD_DIR: /app/uploads
+      FAISS_INDEX_PATH: /app/faiss_index
+    volumes:
+      - uploads_data:/app/uploads
+      - faiss_data:/app/faiss_index
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: ai_task_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+  uploads_data:
+  faiss_data:

@@ -1,0 +1,5 @@
+IT Support & Troubleshooting Guide
+- To reset your password, visit the internal portal at https://it.example.com.
+- For hardware issues, please visit the IT desk in the East Wing, Room 302.
+- VPN access requires Multi-Factor Authentication (MFA) via the OKTA app.
+- Software install requests should be submitted via the Jira service desk.
